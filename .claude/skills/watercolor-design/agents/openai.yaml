@@ -1,0 +1,4 @@
+interface:
+  display_name: "Watercolor Design"
+  short_description: "Build tactile watercolor websites and motion"
+  default_prompt: "Use $watercolor-design to create a tactile watercolor website with organic hand-painted motion."
