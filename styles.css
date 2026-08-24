@@ -404,9 +404,7 @@ a:focus-visible {
 .chapter {
   position: absolute;
   max-width: min(27rem, calc(100% - 2 * var(--page-gutter)));
-  opacity: 0;
-  transform: translateY(12px);
-  will-change: transform, opacity;
+  opacity: 1;
 }
 
 .chapter h1,
@@ -434,6 +432,20 @@ a:focus-visible {
   font-size: clamp(var(--text-3xl), 4.5vw, var(--text-display));
 }
 
+.chapter--quote h2 {
+  font-size: clamp(1.8rem, 3.4vw, 3.9rem);
+  line-height: 1.08;
+}
+
+.ink-word {
+  display: inline-block;
+  transform-origin: center 70%;
+}
+
+.ink-letter {
+  visibility: hidden;
+}
+
 .chapter p {
   max-width: 45ch;
   margin: var(--space-lg) 0 0;
@@ -442,17 +454,17 @@ a:focus-visible {
   letter-spacing: 0.008em;
 }
 
-.chapter:nth-child(2) h2 {
+.chapter:nth-child(1) h2 {
   transform: rotate(-0.28deg) translateX(0.04em);
   letter-spacing: -0.028em;
 }
 
-.chapter:nth-child(3) h2 {
+.chapter:nth-child(2) h2 {
   transform: rotate(0.22deg) translateY(0.025em);
   letter-spacing: -0.01em;
 }
 
-.chapter:nth-child(4) h2 {
+.chapter:nth-child(3) h2 {
   transform: rotate(-0.16deg);
   letter-spacing: -0.024em;
 }
@@ -460,11 +472,6 @@ a:focus-visible {
 .chapter:nth-child(even) p {
   transform: rotate(0.12deg);
   letter-spacing: 0.014em;
-}
-
-.chapter--opening {
-  inset-block-start: 21%;
-  inset-inline-start: var(--page-gutter);
 }
 
 .chapter--root {
@@ -487,11 +494,6 @@ a:focus-visible {
   inset-inline-end: var(--page-gutter);
   max-width: min(34rem, calc(100% - 2 * var(--page-gutter)));
   text-align: end;
-}
-
-.chapter--release h2 {
-  font-size: clamp(1.65rem, 3vw, 3.4rem);
-  line-height: 1.08;
 }
 
 .chapter--release p {
@@ -539,32 +541,12 @@ a:focus-visible {
     inset-block-start: 8%;
   }
 
-  .dandelion,
-  .flying-seeds {
+  .dandelion {
     transform: translateX(200px);
   }
 
   .chapter {
     display: none;
-  }
-
-  .chapter--opening {
-    display: block;
-    inset-block-start: 17%;
-    inset-inline: var(--page-gutter);
-    opacity: 1;
-    transform: none;
-    text-align: start;
-  }
-
-  .chapter--opening h1 {
-    max-width: 8ch;
-    font-size: clamp(2.8rem, 15vw, 4.4rem);
-  }
-
-  .chapter--opening p {
-    max-width: 24ch;
-    font-size: var(--text-base);
   }
 
   .scroll-cue {
@@ -613,12 +595,6 @@ a:focus-visible {
 
   .chapter {
     display: none;
-  }
-
-  .chapter--opening {
-    display: block;
-    opacity: 1 !important;
-    transform: none !important;
   }
 
   .journey-transcript {

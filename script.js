@@ -1,4 +1,4 @@
-/* Hallmark · pre-emit critique: P5 H5 E4 S5 R5 V5 */
+/* Hallmark · pre-emit critique: P5 H5 E5 S5 R5 V5 */
 const svgNS = "http://www.w3.org/2000/svg";
 
 const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
@@ -159,16 +159,75 @@ leafSketchPaths.forEach((paths, groupIndex) => {
   });
 });
 
-function setChapterOpacity(chapter, progress) {
+function prepareHandwriting() {
+  chapters.forEach((chapter, chapterIndex) => {
+    const letters = [];
+    const textElements = [...chapter.querySelectorAll("h2, p")];
+
+    textElements.forEach((element) => {
+      const text = element.textContent.trim();
+      element.textContent = "";
+
+      text.split(/\s+/).forEach((wordText, wordIndex, wordList) => {
+        const word = document.createElement("span");
+        const tilt = (seeded(letters.length + chapterIndex * 31) - 0.5) * 0.6;
+        word.className = "ink-word";
+        word.style.transform = `rotate(${tilt.toFixed(3)}deg)`;
+
+        [...wordText].forEach((character) => {
+          const letter = document.createElement("span");
+          letter.className = "ink-letter";
+          letter.textContent = character;
+          word.appendChild(letter);
+          letters.push(letter);
+        });
+
+        element.appendChild(word);
+
+        if (wordIndex < wordList.length - 1) {
+          element.appendChild(document.createTextNode(" "));
+        }
+      });
+    });
+
+    chapter.inkLetters = letters;
+    chapter.revealedLetters = 0;
+  });
+}
+
+function setChapterWriting(chapter, progress) {
   const start = Number(chapter.dataset.start);
   const end = Number(chapter.dataset.end);
-  const fadeWindow = Math.min(0.06, (end - start) * 0.3);
-  const fadeIn = start === 0 ? 1 : range(progress, start, start + fadeWindow);
-  const fadeOut = 1 - range(progress, end - fadeWindow, end);
-  const opacity = smooth(Math.min(fadeIn, fadeOut));
-  chapter.style.opacity = opacity.toFixed(3);
-  chapter.style.transform = `translateY(${((1 - opacity) * 12).toFixed(2)}px)`;
+  const writeEnd = start + (end - start) * 0.62;
+  const written = smooth(range(progress, start, writeEnd));
+  const revealCount = Math.round(written * chapter.inkLetters.length);
+  const active = progress >= start && progress <= end;
+
+  chapter.hidden = !active;
+
+  if (revealCount > chapter.revealedLetters) {
+    for (let index = chapter.revealedLetters; index < revealCount; index += 1) {
+      chapter.inkLetters[index].style.visibility = "visible";
+    }
+  } else if (revealCount < chapter.revealedLetters) {
+    for (let index = revealCount; index < chapter.revealedLetters; index += 1) {
+      chapter.inkLetters[index].style.visibility = "hidden";
+    }
+  }
+
+  chapter.revealedLetters = revealCount;
 }
+
+function revealStaticWriting() {
+  chapters.forEach((chapter) => {
+    chapter.inkLetters.forEach((letter) => {
+      letter.style.visibility = "visible";
+    });
+    chapter.revealedLetters = chapter.inkLetters.length;
+  });
+}
+
+prepareHandwriting();
 
 function render(progress) {
   const grow = smooth(range(progress, 0.05, 0.26));
@@ -208,10 +267,17 @@ function render(progress) {
   const budPetalScale = mix(1, 0.01, becomeSeed) * releaseCollapse;
   budPetalLeft.style.transform = `translate(${(-19 * bloom).toFixed(2)}px, ${(8 * bloom).toFixed(2)}px) rotate(${(-64 * bloom).toFixed(2)}deg) scale(${budPetalScale.toFixed(3)})`;
   budPetalRight.style.transform = `translate(${(19 * bloom).toFixed(2)}px, ${(8 * bloom).toFixed(2)}px) rotate(${(64 * bloom).toFixed(2)}deg) scale(${budPetalScale.toFixed(3)})`;
-  const sepalAngle = mix(54 * bloom, 135, becomeSeed);
-  const sepalScale = mix(1, 0.62, bloom) * releaseCollapse;
-  budSepalLeft.style.transform = `translate(${(-7 * bloom).toFixed(2)}px, ${(13 * bloom).toFixed(2)}px) rotate(${(-sepalAngle).toFixed(2)}deg) scale(${sepalScale.toFixed(3)})`;
-  budSepalRight.style.transform = `translate(${(7 * bloom).toFixed(2)}px, ${(13 * bloom).toFixed(2)}px) rotate(${sepalAngle.toFixed(2)}deg) scale(${sepalScale.toFixed(3)})`;
+  const spentSepal = smooth(range(release, 0.04, 0.88));
+  const openSepalAngle = mix(54 * bloom, 135, becomeSeed);
+  const leftSepalAngle = mix(openSepalAngle, 169, spentSepal);
+  const rightSepalAngle = mix(openSepalAngle, 175, spentSepal);
+  const sepalBaseScale = mix(1, 0.62, bloom);
+  const sepalWidth = mix(sepalBaseScale, 0.34, spentSepal);
+  const sepalLength = mix(sepalBaseScale, 0.78, spentSepal);
+  const sepalX = mix(7 * bloom, 2.5, spentSepal);
+  const sepalY = mix(13 * bloom, 27, spentSepal);
+  budSepalLeft.style.transform = `translate(${(-sepalX).toFixed(2)}px, ${sepalY.toFixed(2)}px) rotate(${(-leftSepalAngle).toFixed(2)}deg) scale(${sepalWidth.toFixed(3)}, ${sepalLength.toFixed(3)})`;
+  budSepalRight.style.transform = `translate(${sepalX.toFixed(2)}px, ${sepalY.toFixed(2)}px) rotate(${rightSepalAngle.toFixed(2)}deg) scale(${sepalWidth.toFixed(3)}, ${sepalLength.toFixed(3)})`;
   budSketch.style.transform = `scale(${mix(1, 0.04, bloom).toFixed(3)})`;
 
   petals.forEach((petal, index) => {
@@ -251,7 +317,7 @@ function render(progress) {
     seed.style.transform = `translate(${x.toFixed(2)}px, ${y.toFixed(2)}px) rotate(${turn.toFixed(2)}deg) scale(${scale.toFixed(3)})`;
   });
 
-  chapters.forEach((chapter) => setChapterOpacity(chapter, progress));
+  chapters.forEach((chapter) => setChapterWriting(chapter, progress));
   scrollCue.style.opacity = String(clamp(1 - progress * 9));
 }
 
@@ -271,6 +337,7 @@ function update() {
       chapter.style.removeProperty("opacity");
       chapter.style.removeProperty("transform");
     });
+    revealStaticWriting();
     return;
   }
 
