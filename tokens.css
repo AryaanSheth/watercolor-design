@@ -1,0 +1,80 @@
+/* Hallmark · genre: editorial · theme: Garden · token source */
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=Kalam:wght@300;400&display=swap");
+
+:root {
+  --color-sky-top: oklch(89% 0.05 221);
+  --color-sky-bottom: oklch(95% 0.042 91);
+  --color-sky-wash: oklch(79% 0.072 218 / 0.52);
+  --color-sky-clear: oklch(90% 0.03 220 / 0);
+  --color-sun: oklch(92% 0.15 91 / 0.7);
+  --color-sun-soft: oklch(95% 0.105 96 / 0.32);
+  --color-grass-light: oklch(66% 0.11 127 / 0.68);
+  --color-grass-mid: oklch(49% 0.105 137 / 0.76);
+  --color-grass-deep: oklch(34% 0.075 142 / 0.82);
+  --color-stem: oklch(43% 0.105 128 / 0.78);
+  --color-stem-wash: oklch(60% 0.12 119 / 0.38);
+  --color-petal: oklch(89% 0.18 94 / 0.68);
+  --color-petal-wash: oklch(96% 0.12 99 / 0.46);
+  --color-petal-shadow: oklch(74% 0.17 78 / 0.62);
+  --color-petal-pool: oklch(70% 0.19 72 / 0.22);
+  --color-bud-green: oklch(45% 0.12 126 / 0.7);
+  --color-seed: oklch(96% 0.014 94);
+  --color-seed-shadow: oklch(62% 0.025 108);
+  --color-paper: oklch(97% 0.015 92);
+  --color-paper-2: oklch(93% 0.022 91);
+  --color-ink: oklch(37% 0.018 118 / 0.76);
+  --color-display: oklch(39% 0.019 116 / 0.72);
+  --color-pencil-soft: oklch(42% 0.017 112 / 0.68);
+  --color-muted: oklch(49% 0.022 127);
+  --color-rule: oklch(79% 0.025 120 / 0.72);
+  --color-focus: oklch(42% 0.13 145);
+  --color-whitewash: oklch(98% 0.01 94 / 0.7);
+  --color-shadow: oklch(20% 0.025 137 / 0.12);
+  --color-halftone-cool: oklch(36% 0.075 221 / 0.2);
+  --color-halftone-warm: oklch(63% 0.115 82 / 0.16);
+  --color-graphite: oklch(32% 0.016 123 / 0.42);
+  --color-pencil-ghost: oklch(43% 0.012 111 / 0.09);
+  --color-paper-fiber: oklch(48% 0.018 104 / 0.09);
+  --color-paper-fiber-soft: oklch(61% 0.022 96 / 0.055);
+
+  --font-display: "Caveat", cursive;
+  --font-body: "Kalam", cursive;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-md: 1.25rem;
+  --text-lg: 1.5625rem;
+  --text-xl: 1.953rem;
+  --text-2xl: 2.441rem;
+  --text-3xl: 3.052rem;
+  --text-4xl: 3.815rem;
+  --text-display: clamp(3rem, 6vw + 0.5rem, 5.25rem);
+
+  --space-3xs: 0.125rem;
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.5rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6rem;
+  --space-4xl: 9rem;
+
+  --page-gutter: clamp(1rem, 4vw, 4rem);
+  --rule-hair: 1px;
+  --radius-soft: 0.4rem;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-micro: 120ms;
+  --dur-short: 220ms;
+  --dur-long: 420ms;
+
+  --z-base: 1;
+  --z-raised: 10;
+  --z-sticky: 200;
+  --z-texture: 350;
+}

@@ -1,0 +1,634 @@
+/* Hallmark · macrostructure: Marquee Hero · genre: editorial · theme: Atelier · enrichment: E5 tier-B hand-built SVG · nav: none · footer: none · tone: poetic, soft, contemplative · anchor hue: leaf-green · pre-emit critique: P5 H5 E5 S5 R5 V5 · contrast: art-directed low graphite · mobile: pass (34, 49–57) */
+@import url("./tokens.css");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip;
+  background: var(--color-paper);
+}
+
+body {
+  margin: 0;
+  min-width: 20rem;
+  overflow-x: clip;
+  color: var(--color-ink);
+  background: var(--color-paper);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 300;
+  line-height: 1.6;
+  text-shadow:
+    0.018em 0.012em 0 var(--color-pencil-ghost),
+    -0.012em 0.009em 0 var(--color-pencil-ghost);
+}
+
+.paper-texture {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-texture);
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.22;
+  mix-blend-mode: multiply;
+  background-image:
+    radial-gradient(ellipse at 24% 38%, var(--color-paper-fiber) 0 0.7px, transparent 1.6px),
+    radial-gradient(ellipse at 72% 61%, var(--color-paper-fiber-soft) 0 0.55px, transparent 1.35px),
+    radial-gradient(ellipse at 31% 44%, var(--color-paper-fiber-soft), transparent 43%);
+  background-position: 0 0, 0.35rem 0.6rem, center;
+  background-size: 2.3rem 3.1rem, 3.7rem 2.9rem, 23rem 19rem;
+}
+
+a {
+  color: inherit;
+}
+
+a:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 4px;
+}
+
+.journey {
+  position: relative;
+  height: 520svh;
+  background:
+    radial-gradient(ellipse at 17% 21%, var(--color-sky-wash), var(--color-sky-clear) 43%),
+    radial-gradient(ellipse at 82% 56%, var(--color-sun-soft), var(--color-sky-clear) 39%),
+    linear-gradient(180deg, var(--color-sky-top), var(--color-sky-bottom));
+}
+
+.scene {
+  position: sticky;
+  inset-block-start: 0;
+  height: 100svh;
+  min-height: 38rem;
+  overflow: hidden;
+  isolation: isolate;
+  contain: paint;
+}
+
+.scene-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: var(--z-base);
+}
+
+.sky-grain {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-raised);
+  pointer-events: none;
+  opacity: 0.11;
+  mix-blend-mode: multiply;
+  background-image: repeating-radial-gradient(circle at 21% 34%, var(--color-shadow) 0 0.6px, var(--color-sky-clear) 0.8px 3.4px);
+}
+
+.halftone-field {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-raised);
+  pointer-events: none;
+  opacity: 0.16;
+  mix-blend-mode: multiply;
+  background-image:
+    radial-gradient(circle, var(--color-halftone-cool) 0 0.7px, var(--color-sky-clear) 0.8px),
+    radial-gradient(circle, var(--color-halftone-warm) 0 0.65px, var(--color-sky-clear) 0.75px);
+  background-position: 0 0, 0.24rem 0.24rem;
+  background-size: 0.55rem 0.55rem;
+  mask-image: linear-gradient(145deg, var(--color-whitewash), var(--color-sky-clear) 66%);
+}
+
+.sun-halo {
+  fill: var(--color-sun-soft);
+  filter: url("#soften");
+}
+
+.sun {
+  fill: var(--color-sun);
+  opacity: 0.58;
+  filter: url("#soft-wash");
+}
+
+.wash {
+  fill: var(--color-sky-wash);
+  opacity: 0.18;
+  filter: url("#soft-wash");
+}
+
+.wash--two {
+  opacity: 0.11;
+  transform: rotate(-1deg);
+  transform-origin: center;
+}
+
+.far-field {
+  fill: var(--color-grass-light);
+  opacity: 0.54;
+  filter: url("#soft-wash");
+}
+
+.near-field {
+  fill: var(--color-grass-deep);
+  filter: url("#paint-edge");
+  opacity: 0.7;
+}
+
+.far-field--wash,
+.near-field--wash {
+  filter: url("#wet-pigment");
+  mix-blend-mode: multiply;
+}
+
+.far-field--wash {
+  opacity: 0.24;
+}
+
+.near-field--wash {
+  opacity: 0.2;
+}
+
+.land-sketch {
+  fill: none;
+  stroke: var(--color-graphite);
+  stroke-width: 1.1;
+  stroke-linecap: round;
+  opacity: 0.3;
+  filter: url("#soft-wash");
+}
+
+.grass-blade {
+  fill: none;
+  stroke: var(--color-grass-mid);
+  stroke-linecap: round;
+  opacity: 0.48;
+}
+
+.grass-blade:nth-child(3n) {
+  stroke: var(--color-grass-light);
+  opacity: 0.38;
+}
+
+.grass-blade:nth-child(5n) {
+  stroke: var(--color-grass-deep);
+  opacity: 0.56;
+}
+
+.flower-stem {
+  fill: none;
+  stroke: var(--color-stem);
+  stroke-width: 5.5;
+  stroke-linecap: round;
+  opacity: 0.64;
+  filter: url("#botanical-wash");
+}
+
+.flower-stem--wash {
+  stroke: var(--color-stem-wash);
+  stroke-width: 12;
+  opacity: 0.24;
+  filter: url("#pigment-pool");
+}
+
+.flower-stem-sketch {
+  fill: none;
+  stroke: var(--color-graphite);
+  stroke-width: 0.8;
+  stroke-linecap: round;
+  opacity: 0;
+  filter: url("#soft-wash");
+}
+
+.leaf,
+.leaf-wash {
+  transform-box: fill-box;
+  transform-origin: center;
+  mix-blend-mode: multiply;
+}
+
+.leaf {
+  fill: var(--color-stem);
+  opacity: 0.58;
+  filter: url("#botanical-wash");
+}
+
+.leaf-wash {
+  fill: var(--color-stem-wash);
+  opacity: 0.16;
+  filter: url("#pigment-pool");
+}
+
+.leaf-growth {
+  transform-box: view-box;
+  opacity: 0;
+}
+
+.leaf-growth--left {
+  transform-origin: 492px 754px;
+}
+
+.leaf-growth--right {
+  transform-origin: 496px 700px;
+}
+
+.leaf-sketch {
+  fill: none;
+  stroke: var(--color-graphite);
+  stroke-width: 0.82;
+  stroke-linecap: round;
+  opacity: 0;
+  filter: url("#soft-wash");
+}
+
+.flower-head {
+  transform-box: view-box;
+  transform-origin: 0 0;
+}
+
+.bud {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+}
+
+.bud-petal {
+  fill: var(--color-petal);
+  opacity: 0.76;
+  filter: url("#botanical-wash");
+}
+
+.bud-petal--right {
+  fill: var(--color-petal-shadow);
+  opacity: 0.5;
+}
+
+.bud-sepal {
+  fill: var(--color-bud-green);
+  mix-blend-mode: multiply;
+  filter: url("#botanical-wash");
+}
+
+.bud-sepal--right {
+  opacity: 0.7;
+}
+
+.bud-sketch {
+  fill: none;
+  stroke: var(--color-graphite);
+  stroke-width: 0.75;
+  stroke-linecap: round;
+  opacity: 0.22;
+  filter: url("#soft-wash");
+}
+
+.yellow-petals,
+.seed-head,
+.leaf-growth {
+  will-change: transform, opacity;
+}
+
+.yellow-petals {
+  opacity: 0;
+  filter: url("#soft-wash");
+}
+
+.petal-wrap {
+  transform-origin: 0 0;
+}
+
+.yellow-petal,
+.yellow-petal-wash {
+  fill: var(--color-petal);
+  stroke: none;
+}
+
+.yellow-petal-wash {
+  fill: var(--color-petal-wash);
+  opacity: 0.58;
+  transform: translate(3px, -3px) scale(0.9, 1.03);
+  transform-origin: 0 0;
+}
+
+.yellow-petal-pool {
+  fill: var(--color-petal-pool);
+  stroke: none;
+  mix-blend-mode: multiply;
+}
+
+.petal-outline,
+.petal-sketch {
+  fill: none;
+  stroke: var(--color-graphite);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+
+.petal-outline {
+  stroke-width: 0.7;
+  opacity: 0.16;
+}
+
+.petal-sketch {
+  stroke-width: 0.75;
+  opacity: 0.24;
+}
+
+.petal-wrap:nth-child(4n) .yellow-petal {
+  fill: var(--color-petal-shadow);
+  opacity: 0.68;
+}
+
+.flower-core {
+  fill: var(--color-petal-shadow);
+  filter: url("#pigment-pool");
+}
+
+.flower-core-wash {
+  fill: var(--color-petal);
+  opacity: 0.55;
+}
+
+.flower-core-wash--small {
+  fill: var(--color-petal-shadow);
+  opacity: 0.48;
+}
+
+.flower-core-sketch {
+  fill: none;
+  stroke: var(--color-graphite);
+  stroke-width: 0.72;
+  filter: url("#soft-wash");
+}
+
+.seed-mark {
+  fill: none;
+  stroke: var(--color-seed-shadow);
+  stroke-linecap: round;
+  stroke-width: 0.8;
+}
+
+.seed-head {
+  opacity: 0;
+  filter: url("#botanical-wash");
+}
+
+.seed-receptacle {
+  fill: var(--color-seed-shadow);
+  opacity: 0.72;
+  transform-origin: 0 0;
+}
+
+.seed-head .seed-mark {
+  stroke-width: 0.62;
+  opacity: 0.58;
+}
+
+.attached-seed {
+  transform-origin: 0 0;
+}
+
+.chapters {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-raised);
+  pointer-events: none;
+}
+
+.chapter {
+  position: absolute;
+  max-width: min(27rem, calc(100% - 2 * var(--page-gutter)));
+  opacity: 0;
+  transform: translateY(12px);
+  will-change: transform, opacity;
+}
+
+.chapter h1,
+.chapter h2 {
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-family: var(--font-display);
+  font-style: normal;
+  color: var(--color-display);
+  font-weight: 400;
+  letter-spacing: -0.018em;
+  line-height: 0.94;
+  text-wrap: balance;
+  text-shadow:
+    0.025em 0.012em 0 var(--color-pencil-ghost),
+    -0.018em 0.025em 0 var(--color-pencil-ghost);
+}
+
+.chapter h1 {
+  font-size: var(--text-display);
+}
+
+.chapter h2 {
+  font-size: clamp(var(--text-3xl), 4.5vw, var(--text-display));
+}
+
+.chapter p {
+  max-width: 45ch;
+  margin: var(--space-lg) 0 0;
+  color: var(--color-pencil-soft);
+  font-size: var(--text-base);
+  letter-spacing: 0.008em;
+}
+
+.chapter:nth-child(2) h2 {
+  transform: rotate(-0.28deg) translateX(0.04em);
+  letter-spacing: -0.028em;
+}
+
+.chapter:nth-child(3) h2 {
+  transform: rotate(0.22deg) translateY(0.025em);
+  letter-spacing: -0.01em;
+}
+
+.chapter:nth-child(4) h2 {
+  transform: rotate(-0.16deg);
+  letter-spacing: -0.024em;
+}
+
+.chapter:nth-child(even) p {
+  transform: rotate(0.12deg);
+  letter-spacing: 0.014em;
+}
+
+.chapter--opening {
+  inset-block-start: 21%;
+  inset-inline-start: var(--page-gutter);
+}
+
+.chapter--root {
+  inset-block-start: 20%;
+  inset-inline-end: var(--page-gutter);
+  text-align: end;
+}
+
+.chapter--root p {
+  margin-inline-start: auto;
+}
+
+.chapter--bloom {
+  inset-block-start: 17%;
+  inset-inline-start: var(--page-gutter);
+}
+
+.chapter--release {
+  inset-block-start: 22%;
+  inset-inline-end: var(--page-gutter);
+  max-width: min(34rem, calc(100% - 2 * var(--page-gutter)));
+  text-align: end;
+}
+
+.chapter--release h2 {
+  font-size: clamp(1.65rem, 3vw, 3.4rem);
+  line-height: 1.08;
+}
+
+.chapter--release p {
+  margin-inline-start: auto;
+}
+
+.scroll-cue {
+  position: absolute;
+  inset-inline-start: var(--page-gutter);
+  inset-block-end: var(--space-xl);
+  z-index: var(--z-raised);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--text-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: opacity var(--dur-short) var(--ease-out);
+}
+
+.scroll-cue i {
+  display: block;
+  width: 3rem;
+  height: var(--rule-hair);
+  background: var(--color-ink);
+  transform-origin: left center;
+}
+
+.journey-transcript {
+  display: none;
+}
+
+@media (max-width: 40rem) {
+  .journey {
+    height: auto;
+  }
+
+  .scene {
+    position: relative;
+    height: 88svh;
+    min-height: 34rem;
+  }
+
+  .scene-art {
+    inset-block-start: 8%;
+  }
+
+  .dandelion,
+  .flying-seeds {
+    transform: translateX(200px);
+  }
+
+  .chapter {
+    display: none;
+  }
+
+  .chapter--opening {
+    display: block;
+    inset-block-start: 17%;
+    inset-inline: var(--page-gutter);
+    opacity: 1;
+    transform: none;
+    text-align: start;
+  }
+
+  .chapter--opening h1 {
+    max-width: 8ch;
+    font-size: clamp(2.8rem, 15vw, 4.4rem);
+  }
+
+  .chapter--opening p {
+    max-width: 24ch;
+    font-size: var(--text-base);
+  }
+
+  .scroll-cue {
+    display: none;
+  }
+
+  .journey-transcript {
+    display: grid;
+    gap: var(--space-lg);
+    padding: var(--space-2xl) var(--page-gutter) var(--space-3xl);
+    background: var(--color-sky-bottom);
+  }
+
+  .journey-transcript p {
+    max-width: 45ch;
+    margin: 0;
+  }
+
+  .journey-transcript p:nth-child(2) {
+    margin-inline-start: auto;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: var(--dur-micro) !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: var(--dur-micro) !important;
+  }
+
+  .journey {
+    height: auto;
+  }
+
+  .scene {
+    position: relative;
+    height: 88svh;
+  }
+
+  .chapter {
+    display: none;
+  }
+
+  .chapter--opening {
+    display: block;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .journey-transcript {
+    display: grid;
+    gap: var(--space-lg);
+    padding: var(--space-2xl) var(--page-gutter) var(--space-3xl);
+    background: var(--color-sky-bottom);
+  }
+
+  .scroll-cue {
+    display: none;
+  }
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Painted Web Design"
+  short_description: "Build expressive hand-painted digital interfaces"
+  default_prompt: "Use $painted-web-design to create an accessible website with a tactile watercolor and hand-drawn visual language."

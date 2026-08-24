@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="description" content="A poetic portfolio journey told through the life of a dandelion.">
+    <title>A quiet record of becoming</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main id="top">
+      <section class="journey" aria-labelledby="journey-title">
+        <div class="scene">
+          <div class="paper-texture" aria-hidden="true"></div>
+          <div class="sky-grain" aria-hidden="true"></div>
+          <div class="halftone-field" aria-hidden="true"></div>
+
+          <svg class="scene-art" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="scene-title scene-desc">
+            <title id="scene-title">A dandelion growing through the seasons</title>
+            <desc id="scene-desc">A dandelion rises from a hand-painted meadow, blooms yellow, turns to a white seed head, and releases its seeds into the wind as the page scrolls.</desc>
+            <defs>
+              <filter id="soft-wash" x="-20%" y="-20%" width="140%" height="140%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="3" seed="7" result="noise"></feTurbulence>
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="13"></feDisplacementMap>
+                <feGaussianBlur stdDeviation="0.55"></feGaussianBlur>
+              </filter>
+              <filter id="soften" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="8"></feGaussianBlur>
+              </filter>
+              <filter id="paint-edge" x="-20%" y="-20%" width="140%" height="140%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="4" seed="12" result="paper"></feTurbulence>
+                <feDisplacementMap in="SourceGraphic" in2="paper" scale="8" result="edge"></feDisplacementMap>
+                <feGaussianBlur in="edge" stdDeviation="0.35" result="soft-edge"></feGaussianBlur>
+                <feBlend in="soft-edge" in2="SourceGraphic" mode="multiply"></feBlend>
+              </filter>
+              <filter id="wet-pigment" x="-35%" y="-35%" width="170%" height="170%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="4" seed="31" result="wet-noise"></feTurbulence>
+                <feDisplacementMap in="SourceGraphic" in2="wet-noise" scale="11" result="wet-edge"></feDisplacementMap>
+                <feGaussianBlur in="wet-edge" stdDeviation="0.7" result="wet-soft"></feGaussianBlur>
+                <feBlend in="wet-soft" in2="SourceGraphic" mode="multiply"></feBlend>
+              </filter>
+              <filter id="botanical-wash" x="-40%" y="-40%" width="180%" height="180%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.011 0.047" numOctaves="3" seed="47" result="wash-noise"></feTurbulence>
+                <feDisplacementMap in="SourceGraphic" in2="wash-noise" scale="4" result="wandering-edge"></feDisplacementMap>
+                <feGaussianBlur in="wandering-edge" stdDeviation="0.35"></feGaussianBlur>
+              </filter>
+              <filter id="pigment-pool" x="-35%" y="-35%" width="170%" height="170%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.024 0.082" numOctaves="2" seed="19" result="pool-noise"></feTurbulence>
+                <feDisplacementMap in="SourceGraphic" in2="pool-noise" scale="3" result="pool-edge"></feDisplacementMap>
+                <feGaussianBlur in="pool-edge" stdDeviation="0.85"></feGaussianBlur>
+              </filter>
+            </defs>
+
+            <g class="sky-washes" aria-hidden="true">
+              <circle class="sun-halo" cx="805" cy="170" r="96"></circle>
+              <circle class="sun" cx="805" cy="170" r="61"></circle>
+              <path class="wash wash--one" d="M-20 190 C170 85 310 240 500 150 C700 55 825 80 1030 0 L1030 320 C810 270 610 330 420 290 C220 248 80 342 -20 300 Z"></path>
+              <path class="wash wash--two" d="M-30 480 C190 355 320 525 535 412 C720 315 860 430 1030 338 L1030 620 C820 565 620 630 410 555 C180 475 75 610 -30 570 Z"></path>
+            </g>
+
+            <path class="far-field" d="M-20 770 C160 704 285 760 440 714 C620 660 790 738 1020 665 L1020 1020 L-20 1020 Z"></path>
+            <path class="far-field far-field--wash" d="M-35 794 C124 720 292 796 463 731 C642 664 842 760 1035 688 L1035 1025 L-35 1025 Z"></path>
+            <path class="near-field" d="M-20 840 C165 772 332 835 510 784 C694 731 860 815 1020 756 L1020 1020 L-20 1020 Z"></path>
+            <path class="near-field near-field--wash" d="M-32 872 C158 799 324 864 528 803 C706 750 882 843 1038 779 L1038 1025 L-32 1025 Z"></path>
+            <g class="land-sketch" aria-hidden="true">
+              <path d="M-16 776 C158 711 284 767 443 720 C619 669 792 744 1016 671"></path>
+              <path d="M-20 846 C165 778 333 842 511 790 C693 738 857 821 1020 762"></path>
+              <path d="M-12 852 C174 789 335 850 517 800 C698 750 861 830 1018 774"></path>
+            </g>
+
+            <g id="grassBlades" class="grass-blades" aria-hidden="true"></g>
+
+            <g class="dandelion" aria-hidden="true">
+              <path class="flower-stem flower-stem--wash" d="M493 908 C472 790 522 637 493 360"></path>
+              <path id="flowerStem" class="flower-stem" d="M493 908 C472 790 522 637 493 360"></path>
+              <path class="flower-stem-sketch" d="M489 906 C476 786 517 636 490 363"></path>
+              <g class="leaf-growth leaf-growth--left">
+                <path class="leaf" d="M491 758 C413 727 387 668 356 610 C421 639 468 680 494 724 C494 737 493 750 491 758 Z"></path>
+                <path class="leaf-wash" d="M491 758 C413 727 387 668 356 610 C421 639 468 680 494 724 C494 737 493 750 491 758 Z"></path>
+                <g class="leaf-sketch">
+                  <path d="M492 753 Q427 690 365 618"></path>
+                  <path d="M463 718 Q429 705 399 682 M444 697 Q414 683 387 653"></path>
+                </g>
+              </g>
+              <g class="leaf-growth leaf-growth--right">
+                <path class="leaf" d="M495 703 C566 663 603 607 628 553 C565 577 522 619 498 667 C497 679 496 692 495 703 Z"></path>
+                <path class="leaf-wash" d="M495 703 C566 663 603 607 628 553 C565 577 522 619 498 667 C497 679 496 692 495 703 Z"></path>
+                <g class="leaf-sketch">
+                  <path d="M496 699 Q559 628 620 560"></path>
+                  <path d="M526 661 Q556 647 584 618 M545 637 Q573 620 599 589"></path>
+                </g>
+              </g>
+
+              <g id="flowerHead" class="flower-head" transform="translate(493 360)">
+                <g id="bud" class="bud">
+                  <path class="bud-petal bud-petal--left" d="M0 10 C-29 -13 -29 -67 -7 -101 C-1 -110 3 -110 8 -99 C19 -65 18 -14 0 10 Z"></path>
+                  <path class="bud-petal bud-petal--right" d="M2 10 C22 -11 31 -61 9 -100 C4 -111 -1 -111 -7 -99 C-18 -58 -16 -13 2 10 Z"></path>
+                  <path class="bud-sepal bud-sepal--left" d="M0 14 C-28 -5 -37 -37 -29 -70 C-10 -51 -2 -26 0 14 Z"></path>
+                  <path class="bud-sepal bud-sepal--right" d="M0 14 C27 -7 35 -38 27 -69 C10 -50 2 -25 0 14 Z"></path>
+                  <path class="bud-sketch" d="M-1 12 C-18 -21 -17 -67 -4 -99 M3 12 C17 -22 16 -66 5 -98"></path>
+                </g>
+                <g id="yellowPetals" class="yellow-petals"></g>
+                <g id="seedHead" class="seed-head"></g>
+                <g class="flower-core">
+                  <circle cx="-3" cy="2" r="24"></circle>
+                  <circle class="flower-core-wash" cx="8" cy="-5" r="19"></circle>
+                  <circle class="flower-core-wash flower-core-wash--small" cx="-10" cy="-8" r="13"></circle>
+                </g>
+                <path class="flower-core-sketch" d="M-23 2 C-19 -22 7 -29 25 -13 C36 4 17 28 -5 25 C-24 22 -31 12 -23 2 Z"></path>
+              </g>
+            </g>
+          </svg>
+
+          <div class="chapters" aria-live="off">
+            <article class="chapter chapter--opening" data-start="0" data-end="0.2">
+              <h1 id="journey-title">A quiet record<br>of becoming.</h1>
+              <p>Scroll slowly. The story begins close to the ground.</p>
+            </article>
+
+            <article class="chapter chapter--root" data-start="0.16" data-end="0.42">
+              <h2>First, I learned<br>to reach.</h2>
+              <p>Not all growth announces itself. Some of it happens beneath the surface.</p>
+            </article>
+
+            <article class="chapter chapter--bloom" data-start="0.4" data-end="0.69">
+              <h2>Then came<br>the opening.</h2>
+              <p>A season of making, noticing, and turning toward the light.</p>
+            </article>
+
+            <article class="chapter chapter--release" data-start="0.68" data-end="0.97">
+              <h2>“There are only three events in a man’s life; birth, life, and death; he is not conscious of being born, he dies in pain, and he forgets to live.”</h2>
+              <p>— Jean de la Bruyère</p>
+            </article>
+          </div>
+
+          <div class="scroll-cue" aria-hidden="true">
+            <span>Scroll</span>
+            <i></i>
+          </div>
+        </div>
+
+        <div class="journey-transcript">
+          <p><strong>Root.</strong> Some growth happens beneath the surface.</p>
+          <p><strong>Bloom.</strong> A season of making and turning toward the light.</p>
+          <p><strong>Release.</strong> “There are only three events in a man’s life; birth, life, and death; he is not conscious of being born, he dies in pain, and he forgets to live.” — Jean de la Bruyère</p>
+        </div>
+      </section>
+
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
